@@ -1,8 +1,9 @@
 ﻿
 using BuildEventer.Models;
-using BuildEventer.Views;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Linq;
 using System.Windows.Controls;
 
 namespace BuildEventer.ViewModels
@@ -14,6 +15,35 @@ namespace BuildEventer.ViewModels
             TestCreateViewModels();
 
             TestCreateUserControls();
+
+            m_TypeViewDictionary = GetAllType_View();
+
+        }
+
+        private Dictionary<Type, UserControl> m_TypeViewDictionary = new Dictionary<Type, UserControl>();
+
+        private Dictionary<Type, UserControl> GetAllType_View()
+        {
+            Dictionary<Type, UserControl> dict = new Dictionary<Type, UserControl>();
+
+            var entityTypes = from t in System.Reflection.Assembly.GetAssembly(typeof(IAction)).GetTypes()
+                              where t.IsSubclassOf(typeof(IAction))
+                              select t;
+
+            foreach (var t in entityTypes)
+            {
+                Type typeofView = GetViewTypeFromActionType(t);
+                UserControl view = (UserControl)Activator.CreateInstance(typeofView);
+                dict.Add(t, view);
+            }
+            return dict;
+        }
+
+        private Type GetViewTypeFromActionType(Type TypeName)
+        {
+            string fullName = TypeName.FullName.Replace("Models", "Views");
+            fullName = string.Format("{0}View", fullName);
+            return Type.GetType(fullName);
         }
 
         private void TestCreateViewModels()
@@ -33,7 +63,13 @@ namespace BuildEventer.ViewModels
         {
             //m_UserControls = new Collection<UserControl>();
             //m_UserControls.Add(new CopyActionView());
-            m_UserControls = new DeleteActionView();
+            m_UserControls = new UserControl();
+        }
+
+        private void SettingView()
+        {
+            m_UserControls = m_TypeViewDictionary[m_SelectedAction.GetType()];
+            m_UserControls.DataContext = m_SelectedAction;
         }
 
         #region Properties
@@ -65,7 +101,7 @@ namespace BuildEventer.ViewModels
             set
             {
                 m_SelectedAction = value;
-                m_UserControls.DataContext = m_SelectedAction;
+                SettingView();
                 OnPropertyChanged("SelectedAction");
                 OnPropertyChanged("SelectedActionName");
                 OnPropertyChanged("UserControls");

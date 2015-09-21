@@ -1,15 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
+﻿
+using BuildEventer.Models;
 namespace BuildEventer.ViewModels
 {
-    public class CopyActionViewModel
+    public class CopyActionViewModel : SettingsViewModelBase
     {
-        public CopyActionViewModel()
+        public CopyActionViewModel(CopyAction Action)
         {
+            this.m_CopyAction = Action;
         }
+
+        private CopyAction m_CopyAction;
+        public override string Name { get; set; }
+
+        public override string Type { get; set; }
     }
 }

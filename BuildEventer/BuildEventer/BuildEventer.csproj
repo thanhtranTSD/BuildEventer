@@ -59,6 +59,7 @@
     <Compile Include="ViewModels\ConfigurationViewModel.cs" />
     <Compile Include="ViewModels\CopyActionViewModel.cs" />
     <Compile Include="ViewModels\DeleteActionViewModel.cs" />
+    <Compile Include="ViewModels\SettingsViewModelBase.cs" />
     <Compile Include="ViewModels\ViewModelBase.cs" />
     <Compile Include="Views\CopyActionView.xaml.cs">
       <DependentUpon>CopyActionView.xaml</DependentUpon>
