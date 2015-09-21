@@ -1,0 +1,13 @@
+D:\Working\Task\BuildEventer\Code\BuildEventer\BuildEventer\BuildEventer\bin\Debug\BuildEventer.exe.config
+D:\Working\Task\BuildEventer\Code\BuildEventer\BuildEventer\BuildEventer\bin\Debug\BuildEventer.exe
+D:\Working\Task\BuildEventer\Code\BuildEventer\BuildEventer\BuildEventer\bin\Debug\BuildEventer.pdb
+D:\Working\Task\BuildEventer\Code\BuildEventer\BuildEventer\BuildEventer\obj\Debug\BuildEventer.csprojResolveAssemblyReference.cache
+D:\Working\Task\BuildEventer\Code\BuildEventer\BuildEventer\BuildEventer\obj\Debug\MainWindow.baml
+D:\Working\Task\BuildEventer\Code\BuildEventer\BuildEventer\BuildEventer\obj\Debug\MainWindow.g.cs
+D:\Working\Task\BuildEventer\Code\BuildEventer\BuildEventer\BuildEventer\obj\Debug\App.g.cs
+D:\Working\Task\BuildEventer\Code\BuildEventer\BuildEventer\BuildEventer\obj\Debug\BuildEventer_MarkupCompile.cache
+D:\Working\Task\BuildEventer\Code\BuildEventer\BuildEventer\BuildEventer\obj\Debug\BuildEventer.g.resources
+D:\Working\Task\BuildEventer\Code\BuildEventer\BuildEventer\BuildEventer\obj\Debug\BuildEventer.Properties.Resources.resources
+D:\Working\Task\BuildEventer\Code\BuildEventer\BuildEventer\BuildEventer\obj\Debug\BuildEventer.csproj.GenerateResource.Cache
+D:\Working\Task\BuildEventer\Code\BuildEventer\BuildEventer\BuildEventer\obj\Debug\BuildEventer.exe
+D:\Working\Task\BuildEventer\Code\BuildEventer\BuildEventer\BuildEventer\obj\Debug\BuildEventer.pdb
