@@ -1,8 +1,28 @@
 ﻿<Window x:Class="BuildEventer.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:vm="clr-namespace:BuildEventer.ViewModels"
+        xmlns:view="clr-namespace:BuildEventer.Views"
         Title="MainWindow" Height="350" Width="525">
     <Grid>
-        
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        <Grid Grid.Column="0">
+            <TextBlock Text="{Binding SelectedActionName}" />
+        </Grid>
+        <Grid Grid.Column="2">
+            <GroupBox Header="List Actions:">
+                <ListBox AllowDrop="True" ItemsSource="{Binding Actions}" DisplayMemberPath="Name"
+                         IsSynchronizedWithCurrentItem="True"
+                         SelectedItem="{Binding SelectedAction}"
+                         SelectionMode="Single" />
+            </GroupBox>
+        </Grid>
+        <Grid Grid.Column="1">
+            <ContentControl Content="{Binding UserControls}" />
+        </Grid>
     </Grid>
 </Window>
