@@ -11,12 +11,12 @@
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
         <StackPanel Grid.Row="0" Orientation="Horizontal">
-            <Label Content="Current Delete Action:" />
-            <TextBlock Text="{Binding Name}" />
+            <Label Padding="1" Content="Current Action:" />
+            <TextBlock Padding="1" Text="{Binding Name}" />
         </StackPanel>
         <StackPanel Grid.Row="1" Orientation="Horizontal">
-            <Label Content="Type:" />
-            <TextBlock Text="{Binding Type}" />
+            <Label Padding="1" Content="Type:" />
+            <TextBlock Padding="1" Text="{Binding Type}" />
         </StackPanel>
         <Grid Grid.Row="2">
             <Grid.RowDefinitions>

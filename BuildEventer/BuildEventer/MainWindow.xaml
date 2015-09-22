@@ -4,7 +4,7 @@
         xmlns:vm="clr-namespace:BuildEventer.ViewModels"
         xmlns:view="clr-namespace:BuildEventer.Views"
         Title="MainWindow" Height="350" Width="525">
-    <Grid>
+    <!--<Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="Auto" />
             <ColumnDefinition Width="*" />
@@ -22,7 +22,10 @@
             </GroupBox>
         </Grid>
         <Grid Grid.Column="1">
-            <ContentControl Content="{Binding UserControls}" />
+            <ContentControl Content="{Binding Views}" />
         </Grid>
+    </Grid>-->
+    <Grid>
+        <view:ActionConfigurationView />
     </Grid>
 </Window>

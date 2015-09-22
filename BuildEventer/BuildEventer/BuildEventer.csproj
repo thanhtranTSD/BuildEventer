@@ -55,18 +55,29 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Command\RelayCommand.cs" />
+    <Compile Include="Dialogue\StartUpDialogue.xaml.cs">
+      <DependentUpon>StartUpDialogue.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Models\DeleteAction.cs" />
     <Compile Include="ViewModels\ConfigurationViewModel.cs" />
     <Compile Include="ViewModels\CopyActionViewModel.cs" />
     <Compile Include="ViewModels\DeleteActionViewModel.cs" />
     <Compile Include="ViewModels\SettingsViewModelBase.cs" />
     <Compile Include="ViewModels\ViewModelBase.cs" />
+    <Compile Include="Views\ActionConfigurationView.xaml.cs">
+      <DependentUpon>ActionConfigurationView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\CopyActionView.xaml.cs">
       <DependentUpon>CopyActionView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\DeleteActionView.xaml.cs">
       <DependentUpon>DeleteActionView.xaml</DependentUpon>
     </Compile>
+    <Page Include="Dialogue\StartUpDialogue.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -79,6 +90,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Views\ActionConfigurationView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\CopyActionView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

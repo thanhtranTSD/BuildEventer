@@ -1,5 +1,4 @@
-﻿using BuildEventer.ViewModels;
-using System.Windows;
+﻿using System.Windows;
 
 namespace BuildEventer
 {
@@ -11,7 +10,28 @@ namespace BuildEventer
         public MainWindow()
         {
             InitializeComponent();
-            this.DataContext = new ConfigurationViewModel();
         }
+        #region Constructors
+        #endregion
+
+        #region Properties
+        #endregion
+
+        #region Public functions
+        #endregion
+
+        
+
+        #region Event handlers
+        #endregion
+
+        #region Members
+        #endregion
+
+        #region Enums
+        #endregion
+
+        #region Constants
+        #endregion
     }
 }

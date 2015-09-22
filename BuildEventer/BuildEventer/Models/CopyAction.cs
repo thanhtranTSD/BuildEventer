@@ -4,21 +4,33 @@ namespace BuildEventer.Models
 {
     public class CopyAction : IAction
     {
+
+        #region Constructors
+
         public CopyAction()
         {
-            this.Name = "Copy Action";
-            this.Type = "Copy";
+            this.m_Name = "Copy Action";
+            this.m_Type = "Copy";
         }
 
-        public CopyAction(string ActionName, string ActionType)
+        public CopyAction(string Name, string Type)
         {
-            this.Name = ActionName;
-            this.Type = ActionType;
+            this.m_Name = Name;
+            this.m_Type = Type;
         }
+
+        public CopyAction(string Name, string Type, List<string> Sources, List<string> Destinations)
+        {
+            this.m_Name = Name;
+            this.m_Type = Type;
+            this.m_Sources = Sources;
+            this.m_Destinations = Destinations;
+        }
+
+        #endregion
 
         #region Properties
 
-        private string m_Name = string.Empty;
         public override string Name
         {
             get
@@ -32,7 +44,6 @@ namespace BuildEventer.Models
             }
         }
 
-        private string m_Type = string.Empty;
         public override string Type
         {
             get
@@ -46,8 +57,7 @@ namespace BuildEventer.Models
             }
         }
 
-        private ICollection<string> m_Sources;
-        public ICollection<string> Sources
+        public List<string> Sources
         {
             get
             {
@@ -63,8 +73,7 @@ namespace BuildEventer.Models
             }
         }
 
-        private ICollection<string> m_Destinations;
-        public ICollection<string> Destinations
+        public List<string> Destinations
         {
             get
             {
@@ -79,6 +88,15 @@ namespace BuildEventer.Models
                 }
             }
         }
+
+        #endregion
+
+        #region Members
+
+        private string m_Name = string.Empty;
+        private string m_Type = string.Empty;
+        private List<string> m_Sources;
+        private List<string> m_Destinations;
 
         #endregion
     }

@@ -1,0 +1,15 @@
+﻿<Window x:Class="BuildEventer.Dialogue.StartUpDialogue"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="StartUpDialogue"
+        SizeToContent="WidthAndHeight">
+    <Grid>
+        <StackPanel Orientation="Vertical">
+            <TextBox>Please input working directory:</TextBox>
+            <DockPanel>
+                <TextBox BorderThickness="2" DockPanel.Dock="Left" Width="332" Height="27">C:\</TextBox>
+                <Button DockPanel.Dock="Right" Width="64">Browse...</Button>
+            </DockPanel>
+        </StackPanel>
+    </Grid>
+</Window>

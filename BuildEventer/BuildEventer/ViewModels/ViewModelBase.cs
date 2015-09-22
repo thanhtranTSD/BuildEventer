@@ -17,7 +17,7 @@ namespace BuildEventer.ViewModels
         [DebuggerStepThrough]
         public void VerifyPropertyName(string propertyName)
         {
-            // verify that the property name matches a real,  
+            // Verify that the property name matches a real,  
             // public, instance property on this object.
             if (TypeDescriptor.GetProperties(this)[propertyName] == null)
             {
@@ -32,6 +32,8 @@ namespace BuildEventer.ViewModels
         protected virtual void OnPropertyChanged(string propertyName)
         {
             this.VerifyPropertyName(propertyName);
+
+            //PropertyChangedEventHandler handler = PropertyChanged;
 
             if (this.PropertyChanged != null)
             {
