@@ -55,6 +55,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Behavior\DropBehavior.cs" />
     <Compile Include="Command\RelayCommand.cs" />
     <Compile Include="Dialogue\StartUpDialogue.xaml.cs">
       <DependentUpon>StartUpDialogue.xaml</DependentUpon>

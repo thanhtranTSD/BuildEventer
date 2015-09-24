@@ -1,6 +1,7 @@
 ﻿
 using BuildEventer.Models;
 using System.Collections.Generic;
+using System.ComponentModel;
 namespace BuildEventer.ViewModels
 {
     public class DeleteActionViewModel : SettingsViewModelBase
@@ -45,7 +46,7 @@ namespace BuildEventer.ViewModels
             }
         }
 
-        public List<string> Sources
+        public BindingList<string> Sources
         {
             get
             {
@@ -61,7 +62,7 @@ namespace BuildEventer.ViewModels
             }
         }
 
-        public List<string> Destinations
+        public BindingList<string> Destinations
         {
             get
             {
@@ -83,8 +84,8 @@ namespace BuildEventer.ViewModels
 
         private string m_Name;
         private string m_Type;
-        private List<string> m_Sources;
-        private List<string> m_Destinations;
+        private BindingList<string> m_Sources;
+        private BindingList<string> m_Destinations;
 
         #endregion
     }

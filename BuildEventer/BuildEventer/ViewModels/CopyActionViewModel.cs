@@ -1,6 +1,12 @@
 ﻿
+using BuildEventer.Command;
 using BuildEventer.Models;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.ComponentModel;
+using System.Windows;
+using System.Windows.Data;
+using System.Windows.Input;
 namespace BuildEventer.ViewModels
 {
     public class CopyActionViewModel : SettingsViewModelBase
@@ -11,8 +17,13 @@ namespace BuildEventer.ViewModels
         {
             m_Name = CopyAction.Name;
             m_Type = CopyAction.Type;
+
+            m_Sources = new BindingList<string>();
+            m_Destinations = new BindingList<string>();
+
             m_Sources = CopyAction.Sources;
             m_Destinations = CopyAction.Destinations;
+            //BindingOperations.EnableCollectionSynchronization(Sources, _syncLock);
         }
 
         #endregion
@@ -45,7 +56,7 @@ namespace BuildEventer.ViewModels
             }
         }
 
-        public List<string> Sources
+        public BindingList<string> Sources
         {
             get
             {
@@ -61,7 +72,7 @@ namespace BuildEventer.ViewModels
             }
         }
 
-        public List<string> Destinations
+        public BindingList<string> Destinations
         {
             get
             {
@@ -79,12 +90,50 @@ namespace BuildEventer.ViewModels
 
         #endregion
 
+        #region Command
+
+        // The RelayCommand that implements ICommand
+        public ICommand PreviewDropCommand
+        {
+            get
+            {
+                return m_PreviewDropCommand ?? (m_PreviewDropCommand = new RelayCommand(HandlePreviewDrop));
+            }
+        }
+
+        #endregion
+
+        #region Private Functions
+
+        // The method encapsulated in the relay command
+        private void HandlePreviewDrop(object Object)
+        {
+            // MessageBox.Show("ABC");
+            IDataObject ido = Object as IDataObject;
+            if (null == ido) return;
+
+            // Get all the possible format
+            //string[] formats = ido.GetFormats();
+
+            string data = ido.GetData(DataFormats.Text).ToString();
+            m_Sources.Add(data);
+            OnPropertyChanged("Sources");
+            //string[] formats = ((IDataObject)SelectedModel).GetFormats();
+            //(selectedViewModelType)SelectedModel
+        }
+
+        #endregion
+
         #region Members
 
         private string m_Name;
         private string m_Type;
-        private List<string> m_Sources;
-        private List<string> m_Destinations;
+        private BindingList<string> m_Sources;
+        private BindingList<string> m_Destinations;
+
+        private ICommand m_DropCommand;
+        private ICommand m_PreviewDropCommand;
+        private object _syncLock;
 
         #endregion
     }

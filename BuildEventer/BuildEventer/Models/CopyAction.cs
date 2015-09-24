@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.ComponentModel;
 
 namespace BuildEventer.Models
 {
@@ -19,7 +20,7 @@ namespace BuildEventer.Models
             this.m_Type = Type;
         }
 
-        public CopyAction(string Name, string Type, List<string> Sources, List<string> Destinations)
+        public CopyAction(string Name, string Type, BindingList<string> Sources, BindingList<string> Destinations)
         {
             this.m_Name = Name;
             this.m_Type = Type;
@@ -57,7 +58,7 @@ namespace BuildEventer.Models
             }
         }
 
-        public List<string> Sources
+        public BindingList<string> Sources
         {
             get
             {
@@ -73,7 +74,7 @@ namespace BuildEventer.Models
             }
         }
 
-        public List<string> Destinations
+        public BindingList<string> Destinations
         {
             get
             {
@@ -95,8 +96,8 @@ namespace BuildEventer.Models
 
         private string m_Name = string.Empty;
         private string m_Type = string.Empty;
-        private List<string> m_Sources;
-        private List<string> m_Destinations;
+        private BindingList<string> m_Sources;
+        private BindingList<string> m_Destinations;
 
         #endregion
     }

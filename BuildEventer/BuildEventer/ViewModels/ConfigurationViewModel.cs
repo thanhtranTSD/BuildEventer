@@ -20,9 +20,11 @@ namespace BuildEventer.ViewModels
         {
             TestCreateViewModels();
 
-            TestCreateUserControls();
+            //TestCreateUserControls();
 
-            m_TypeViewDictionary = GetAllActionTypes();
+            var m_ActionTypes = GetAllActionTypes();
+
+            m_AllViewModels = GetAllViewModels();
 
         }
 
@@ -31,22 +33,47 @@ namespace BuildEventer.ViewModels
         #region Private functions
 
         private void Apply()
-        { 
-        
+        {
+
         }
 
         private void CreateAction()
         {
-            int orderAction = m_Actions.Count + 1;
-            m_Actions.Add(new DeleteAction { Name = "Action " + orderAction.ToString(), Sources = new List<string> { "A5" }, Destinations = new List<string> { "D5" } });
+            int orderAction = m_ViewModels.Count + 1;
+            CopyAction action = new CopyAction();
+            action.Name = "Action " + orderAction.ToString();
+            action.Sources = new BindingList<string> { "A1", "B1", "C1" };
+            action.Destinations = new BindingList<string> { "D1", "E1", "F1" };
+            CopyActionViewModel actionVM = new CopyActionViewModel(action);
+            m_ViewModels.Add(actionVM);
         }
 
-        private Dictionary<Type, UserControl> GetAllActionTypes()
+        private void DeleteActionViewModel()
         {
-            Dictionary<Type, UserControl> dict = new Dictionary<Type, UserControl>();
+            m_ViewModels.RemoveAt(SelectedIndex);
+        }
+
+        private List<Type> GetAllActionTypes()
+        {
+            List<Type> actionTypes = new List<Type>();
 
             var entityTypes = from t in System.Reflection.Assembly.GetAssembly(typeof(IAction)).GetTypes()
                               where t.IsSubclassOf(typeof(IAction))
+                              select t;
+
+            foreach (var t in entityTypes)
+            {
+                actionTypes.Add(t);
+            }
+            return actionTypes;
+        }
+
+        private Dictionary<Type, UserControl> GetAllViewModels()
+        {
+            Dictionary<Type, UserControl> dict = new Dictionary<Type, UserControl>();
+
+            var entityTypes = from t in System.Reflection.Assembly.GetAssembly(typeof(SettingsViewModelBase)).GetTypes()
+                              where t.IsSubclassOf(typeof(SettingsViewModelBase))
                               select t;
 
             foreach (var t in entityTypes)
@@ -60,38 +87,50 @@ namespace BuildEventer.ViewModels
 
         private Type GetViewTypeFromActionType(Type TypeName)
         {
-            string fullName = TypeName.FullName.Replace("Models", "Views");
-            fullName = string.Format("{0}View", fullName);
-            return Type.GetType(fullName);
+            string fullName = TypeName.FullName.Replace("ViewModels", "Views");
+            string newFullName = fullName.Remove(fullName.Length - 5);
+            return Type.GetType(newFullName);
         }
 
         private void TestCreateViewModels()
         {
-            m_Actions = new BindingList<IAction>();
+            //m_Actions = new BindingList<IAction>();
 
-            m_Actions.Add(new CopyAction { Name = "Action 1", Sources = new List<string> { "A1", "B1", "C1" }, Destinations = new List<string> { "D1", "E1", "F1" } });
-            m_Actions.Add(new CopyAction { Name = "Action 2", Sources = new List<string> { "A2", "B2", "C2" }, Destinations = new List<string> { "D2", "E2", "F2" } });
-            m_Actions.Add(new CopyAction { Name = "Action 3", Sources = new List<string> { "A3", "B3", "C3" }, Destinations = new List<string> { "D3", "E3", "F3" } });
-            m_Actions.Add(new DeleteAction { Name = "Action 4", Sources = new List<string> { "A4", "B4", "C4" }, Destinations = new List<string> { "D4", "E4", "F4" } });
+            //m_Actions.Add(new CopyAction { Name = "Action 1", Sources = new List<string> { "A1", "B1", "C1" }, Destinations = new List<string> { "D1", "E1", "F1" } });
+            //m_Actions.Add(new CopyAction { Name = "Action 2", Sources = new List<string> { "A2", "B2", "C2" }, Destinations = new List<string> { "D2", "E2", "F2" } });
+            //m_Actions.Add(new CopyAction { Name = "Action 3", Sources = new List<string> { "A3", "B3", "C3" }, Destinations = new List<string> { "D3", "E3", "F3" } });
+            //m_Actions.Add(new DeleteAction { Name = "Action 4", Sources = new List<string> { "A4", "B4", "C4" }, Destinations = new List<string> { "D4", "E4", "F4" } });
 
-            ViewModels.Add(new CopyActionViewModel(new CopyAction { Name = "Action 1", Sources = new List<string> { "A1", "B1", "C1" }, Destinations = new List<string> { "D1", "E1", "F1" } }));
-            ViewModels.Add(new DeleteActionViewModel(new DeleteAction { Name = "Action 4", Sources = new List<string> { "A4", "B4", "C4" }, Destinations = new List<string> { "D4", "E4", "F4" } }));
+            ViewModels.Add(new CopyActionViewModel(new CopyAction { Name = "Action 1", Sources = new BindingList<string> { "A1", "B1", "C1" }, Destinations = new BindingList<string> { "D1", "E1", "F1" } }));
+            ViewModels.Add(new DeleteActionViewModel(new DeleteAction { Name = "Action 4", Sources = new BindingList<string> { "A4", "B4", "C4" }, Destinations = new BindingList<string> { "D4", "E4", "F4" } }));
+            //ViewModels.Add(
 
-            CurrentViewModel = ViewModels[0];
-            ((CopyActionViewModel)CurrentViewModel).Name = "action1";
+            // CurrentViewModel = ViewModels[0];
+            // ((CopyActionViewModel)CurrentViewModel).Name = "action1";
             //CurrentViewModel
         }
 
         private void TestCreateUserControls()
         {
-            m_Views = new UserControl();
+            m_ViewUI = new UserControl();
         }
 
         private void SettingView()
         {
-            m_Views = m_TypeViewDictionary[m_SelectedAction.GetType()];
-            m_Views.DataContext = m_SelectedAction;
-            //m_Views.DataContext = CurrentViewModel;// 
+            if (null == m_SelectedModel)
+            {
+                m_ViewUI = null;
+            }
+            else
+            {
+                m_ViewUI = m_AllViewModels[m_SelectedModel.GetType()];
+                m_ViewUI.DataContext = m_SelectedModel;
+            }
+        }
+
+        private void ApplyAction()
+        {
+            
         }
 
         #endregion
@@ -115,93 +154,58 @@ namespace BuildEventer.ViewModels
         {
             get
             {
-                if (m_ApplyCommand == null)
+                return m_ApplyCommand ?? (m_ApplyCommand = new RelayCommand(p => ApplyAction()));
+            }
+        }            
+
+        public ICommand DeleteSelectedActionCommand
+        {
+            get
+            {
+                if (m_DeleteSelectedActionCommand == null)
                 {
-                    m_ApplyCommand = new RelayCommand(param => Apply(), true);
+                    m_DeleteSelectedActionCommand = new RelayCommand(param => DeleteActionViewModel());
                 }
 
-                return null;
+                return m_DeleteSelectedActionCommand;
             }
         }
 
-        public List<SettingsViewModelBase> ViewModels
+        public BindingList<SettingsViewModelBase> ViewModels
         {
             get
             {
                 if (null == m_ViewModels)
                 {
-                    m_ViewModels = new List<SettingsViewModelBase>();
+                    m_ViewModels = new BindingList<SettingsViewModelBase>();
                 }
 
                 return m_ViewModels;
             }
         }
 
-        public SettingsViewModelBase CurrentViewModel
+        public SettingsViewModelBase SelectedModel
         {
             get
             {
-                return m_CurrentViewModel;
+                return m_SelectedModel;
             }
             set
             {
-                if (m_CurrentViewModel != value)
-                {
-                    m_CurrentViewModel = value;
-                    OnPropertyChanged("CurrentViewModel");
-                }
-            }
-        }
-
-        public BindingList<IAction> Actions
-        {
-            get
-            {
-                return m_Actions;
-            }
-        }
-
-        public IAction SelectedAction
-        {
-            get
-            {
-                return m_SelectedAction;
-            }
-            set
-            {
-                m_SelectedAction = value;
+                m_SelectedModel = value;
                 SettingView();
-                OnPropertyChanged("SelectedAction");
-                OnPropertyChanged("SelectedActionName");
-                OnPropertyChanged("Views");
+                OnPropertyChanged("ViewUI");
+                OnPropertyChanged("SelectedModel");
             }
         }
 
-        public string SelectedActionName
-        {
-            get
-            {
-                if (null == m_SelectedAction)
-                {
-                    return null;
-                }
-                else
-                {
-                    return m_SelectedAction.Type;
-                }
-            }
-            set
-            {
-                m_SelectedActionName = value;
-                OnPropertyChanged("SelectedAction");
-            }
-        }
+        public int SelectedIndex { get; set; }
 
-        public UserControl Views
+        public UserControl ViewUI
         {
             get
             {
-                return m_Views;
+                return m_ViewUI;
             }
         }
 
@@ -209,18 +213,20 @@ namespace BuildEventer.ViewModels
 
         #region Members
 
+        private ICommand m_ApplyCommand;
         private ICommand m_CreateActionCommand;
+        private ICommand m_DeleteSelectedActionCommand;
 
-        private List<SettingsViewModelBase> m_ViewModels;
+        private BindingList<SettingsViewModelBase> m_ViewModels;
 
-        private SettingsViewModelBase m_CurrentViewModel;
 
-        private Dictionary<Type, UserControl> m_TypeViewDictionary = new Dictionary<Type, UserControl>();
-        private BindingList<IAction> m_Actions;
-        private IAction m_SelectedAction;
-        private string m_SelectedActionName;
-        private UserControl m_Views;
-        private RelayCommand m_ApplyCommand;
+        private Dictionary<Type, UserControl> m_AllViewModels = new Dictionary<Type, UserControl>();
+
+        private SettingsViewModelBase m_SelectedModel;
+
+        private UserControl m_ViewUI;
+
+
 
         #endregion
 

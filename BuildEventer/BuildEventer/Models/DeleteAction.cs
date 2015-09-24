@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.ComponentModel;
 
 namespace BuildEventer.Models
 {
@@ -18,7 +19,7 @@ namespace BuildEventer.Models
             this.m_Type = DeleteType;
         }
 
-        public DeleteAction(string DeleteName, string DeleteType, List<string> DeleteSources, List<string> DeleteDestinations)
+        public DeleteAction(string DeleteName, string DeleteType, BindingList<string> DeleteSources, BindingList<string> DeleteDestinations)
         {
             this.m_Name = DeleteName;
             this.m_Type = DeleteType;
@@ -56,7 +57,7 @@ namespace BuildEventer.Models
             }
         }
 
-        public List<string> Sources
+        public BindingList<string> Sources
         {
             get
             {
@@ -72,7 +73,7 @@ namespace BuildEventer.Models
             }
         }
 
-        public List<string> Destinations
+        public BindingList<string> Destinations
         {
             get
             {
@@ -96,9 +97,9 @@ namespace BuildEventer.Models
 
         private string m_Type;
 
-        private List<string> m_Sources;
+        private BindingList<string> m_Sources;
 
-        private List<string> m_Destinations;
+        private BindingList<string> m_Destinations;
 
         #endregion
     }

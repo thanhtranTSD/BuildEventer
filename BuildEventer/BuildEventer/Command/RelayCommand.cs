@@ -41,21 +41,10 @@ namespace BuildEventer.Command
             return ((null == m_CanExecute) ? true : m_CanExecute(parameter));
         }
 
-        public event EventHandler m_CanExecuteChanged;
-
         public event EventHandler CanExecuteChanged
         {
-            add
-            {
-                CommandManager.RequerySuggested += value;
-                this.m_CanExecuteChanged += value;
-            }
-
-            remove
-            {
-                CommandManager.RequerySuggested -= value;
-                this.m_CanExecuteChanged -= value;
-            }
+            add { CommandManager.RequerySuggested += value; }
+            remove { CommandManager.RequerySuggested -= value; }
         }
 
         public void Execute(object parameter)
