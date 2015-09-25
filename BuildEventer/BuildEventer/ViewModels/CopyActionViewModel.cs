@@ -1,10 +1,12 @@
 ﻿
+using BuildEventer.Class;
 using BuildEventer.Command;
 using BuildEventer.Models;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Input;
 namespace BuildEventer.ViewModels
@@ -88,16 +90,53 @@ namespace BuildEventer.ViewModels
             }
         }
 
+        public int SelectedIndexSources { get; set; }
+
+        public int SelectedIndexDestinations { get; set; }
+
         #endregion
 
         #region Command
 
-        // The RelayCommand that implements ICommand
-        public ICommand PreviewDropCommand
+        public ICommand DeleteSourceItemCommand
         {
             get
             {
-                return m_PreviewDropCommand ?? (m_PreviewDropCommand = new RelayCommand(HandlePreviewDrop));
+                if (m_DeleteSourceItemCommand == null)
+                {
+                    m_DeleteSourceItemCommand = new RelayCommand(param => DeleteItemSources(SelectedIndexSources));
+                }
+
+                return m_DeleteSourceItemCommand;
+            }
+        }
+
+        public ICommand DeleteDestItemCommand
+        {
+            get
+            {
+                if (m_DeleteDestItemCommand == null)
+                {
+                    m_DeleteDestItemCommand = new RelayCommand(param => DeleteItemDestinations(SelectedIndexDestinations));
+                }
+
+                return m_DeleteDestItemCommand;
+            }
+        }
+
+        public ICommand PreviewDropToSourceCommand
+        {
+            get
+            {
+                return m_PreviewDropToSourceCommand ?? (m_PreviewDropToSourceCommand = new RelayCommand(HandlePreviewDropToSource));
+            }
+        }
+
+        public ICommand PreviewDropToDestinationCommand
+        {
+            get
+            {
+                return m_PreviewDropToDestinationCommand ?? (m_PreviewDropToDestinationCommand = new RelayCommand(HandlePreviewDropToDestination));
             }
         }
 
@@ -105,21 +144,67 @@ namespace BuildEventer.ViewModels
 
         #region Private Functions
 
-        // The method encapsulated in the relay command
-        private void HandlePreviewDrop(object Object)
+        private void DeleteItemSources(int Index)
         {
-            // MessageBox.Show("ABC");
+            m_Sources.RemoveAt(Index);
+        }
+
+        private void DeleteItemDestinations(int Index)
+        {
+            m_Destinations.RemoveAt(Index);
+        }
+
+        // The method for Sources
+        private void HandlePreviewDropToSource(object Object)
+        {
             IDataObject ido = Object as IDataObject;
-            if (null == ido) return;
 
-            // Get all the possible format
-            //string[] formats = ido.GetFormats();
+            if (null == ido)
+            {
+                return;
+            }
 
-            string data = ido.GetData(DataFormats.Text).ToString();
-            m_Sources.Add(data);
+            DragDropData dropData = (DragDropData)ido.GetData(typeof(DragDropData));
+            foreach (string source in m_Sources)
+            {
+                if (source == dropData.Path)
+                {
+                    MessageBox.Show(dropData.Path.ToString() + " has already in Sources.");
+                    return;
+                }
+            }
+            m_Sources.Add(dropData.Path);
             OnPropertyChanged("Sources");
-            //string[] formats = ((IDataObject)SelectedModel).GetFormats();
-            //(selectedViewModelType)SelectedModel
+        }
+
+        private void HandlePreviewDropToDestination(object Object)
+        {
+            IDataObject ido = Object as IDataObject;
+
+            if (null == ido)
+            {
+                return;
+            }
+
+            DragDropData dropData = (DragDropData)ido.GetData(typeof(DragDropData));
+
+            if (false == dropData.IsFolder)
+            {
+                MessageBox.Show("Path must be a folder.");
+                return;
+            }
+
+            foreach (string dest in m_Destinations)
+            {
+                if (dest == dropData.Path)
+                {
+                    MessageBox.Show(dropData.Path.ToString() + " has already in Destinations.");
+                    return;
+                }
+            }
+
+            m_Destinations.Add(dropData.Path);
+            OnPropertyChanged("Destinations");
         }
 
         #endregion
@@ -131,9 +216,11 @@ namespace BuildEventer.ViewModels
         private BindingList<string> m_Sources;
         private BindingList<string> m_Destinations;
 
-        private ICommand m_DropCommand;
-        private ICommand m_PreviewDropCommand;
         private object _syncLock;
+        private ICommand m_PreviewDropToSourceCommand;
+        private ICommand m_PreviewDropToDestinationCommand;
+        private ICommand m_DeleteDestItemCommand;
+        private ICommand m_DeleteSourceItemCommand;
 
         #endregion
     }

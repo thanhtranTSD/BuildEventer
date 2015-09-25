@@ -18,7 +18,7 @@ namespace BuildEventer.ViewModels
 
         public ConfigurationViewModel()
         {
-            TestCreateViewModels();
+            // TestCreateViewModels();
 
             //TestCreateUserControls();
 
@@ -42,8 +42,8 @@ namespace BuildEventer.ViewModels
             int orderAction = m_ViewModels.Count + 1;
             CopyAction action = new CopyAction();
             action.Name = "Action " + orderAction.ToString();
-            action.Sources = new BindingList<string> { "A1", "B1", "C1" };
-            action.Destinations = new BindingList<string> { "D1", "E1", "F1" };
+            action.Sources = new BindingList<string>();
+            action.Destinations = new BindingList<string>();
             CopyActionViewModel actionVM = new CopyActionViewModel(action);
             m_ViewModels.Add(actionVM);
         }
@@ -130,12 +130,31 @@ namespace BuildEventer.ViewModels
 
         private void ApplyAction()
         {
-            
+
         }
 
         #endregion
 
         #region Properties
+
+        public ICommand TextChangedCommand
+        {
+            get
+            {
+                if (textChangedCommand == null)
+                {
+                    textChangedCommand = new DelegateCommand<TextChangedEventArgs>(OnTextChanged);
+                }
+                return textChangedCommand;
+            }
+        }
+
+        private void OnTextChanged(TextChangedEventArgs e)
+        {
+            string text = (e.Source as TextBox).Text;
+            Application.Current.MainWindow.Title = text;
+
+        }
 
         public ICommand CreateActionCommand
         {
@@ -156,7 +175,7 @@ namespace BuildEventer.ViewModels
             {
                 return m_ApplyCommand ?? (m_ApplyCommand = new RelayCommand(p => ApplyAction()));
             }
-        }            
+        }
 
         public ICommand DeleteSelectedActionCommand
         {
@@ -225,6 +244,7 @@ namespace BuildEventer.ViewModels
         private SettingsViewModelBase m_SelectedModel;
 
         private UserControl m_ViewUI;
+        private ICommand textChangedCommand;
 
 
 

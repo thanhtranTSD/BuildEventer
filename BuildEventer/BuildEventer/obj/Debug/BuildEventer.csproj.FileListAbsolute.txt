@@ -11,9 +11,13 @@ D:\Working\Task\BuildEventer\Code\BuildEventer\BuildEventer\BuildEventer\obj\Deb
 D:\Working\Task\BuildEventer\Code\BuildEventer\BuildEventer\BuildEventer\obj\Debug\BuildEventer.csproj.GenerateResource.Cache
 D:\Working\Task\BuildEventer\Code\BuildEventer\BuildEventer\BuildEventer\obj\Debug\BuildEventer.exe
 D:\Working\Task\BuildEventer\Code\BuildEventer\BuildEventer\BuildEventer\obj\Debug\BuildEventer.pdb
+D:\Working\Task\BuildEventer\Code\BuildEventer1.0\BuildEventer\BuildEventer\bin\Debug\BuildEventer.exe.config
+D:\Working\Task\BuildEventer\Code\BuildEventer1.0\BuildEventer\BuildEventer\bin\Debug\BuildEventer.exe
+D:\Working\Task\BuildEventer\Code\BuildEventer1.0\BuildEventer\BuildEventer\bin\Debug\BuildEventer.pdb
 D:\Working\Task\BuildEventer\Code\BuildEventer1.0\BuildEventer\BuildEventer\obj\Debug\Dialogue\StartUpDialogue.baml
 D:\Working\Task\BuildEventer\Code\BuildEventer1.0\BuildEventer\BuildEventer\obj\Debug\Views\DeleteActionView.baml
 D:\Working\Task\BuildEventer\Code\BuildEventer1.0\BuildEventer\BuildEventer\obj\Debug\Dialogue\StartUpDialogue.g.cs
+D:\Working\Task\BuildEventer\Code\BuildEventer1.0\BuildEventer\BuildEventer\obj\Debug\Explorer\ExplorerView.g.cs
 D:\Working\Task\BuildEventer\Code\BuildEventer1.0\BuildEventer\BuildEventer\obj\Debug\MainWindow.g.cs
 D:\Working\Task\BuildEventer\Code\BuildEventer1.0\BuildEventer\BuildEventer\obj\Debug\Views\ActionConfigurationView.g.cs
 D:\Working\Task\BuildEventer\Code\BuildEventer1.0\BuildEventer\BuildEventer\obj\Debug\Views\CopyActionView.g.cs
@@ -22,9 +26,7 @@ D:\Working\Task\BuildEventer\Code\BuildEventer1.0\BuildEventer\BuildEventer\obj\
 D:\Working\Task\BuildEventer\Code\BuildEventer1.0\BuildEventer\BuildEventer\obj\Debug\GeneratedInternalTypeHelper.g.cs
 D:\Working\Task\BuildEventer\Code\BuildEventer1.0\BuildEventer\BuildEventer\obj\Debug\BuildEventer_MarkupCompile.cache
 D:\Working\Task\BuildEventer\Code\BuildEventer1.0\BuildEventer\BuildEventer\obj\Debug\BuildEventer_MarkupCompile.lref
-D:\Working\Task\BuildEventer\Code\BuildEventer1.0\BuildEventer\BuildEventer\bin\Debug\BuildEventer.exe.config
-D:\Working\Task\BuildEventer\Code\BuildEventer1.0\BuildEventer\BuildEventer\bin\Debug\BuildEventer.exe
-D:\Working\Task\BuildEventer\Code\BuildEventer1.0\BuildEventer\BuildEventer\bin\Debug\BuildEventer.pdb
+D:\Working\Task\BuildEventer\Code\BuildEventer1.0\BuildEventer\BuildEventer\obj\Debug\Explorer\ExplorerView.baml
 D:\Working\Task\BuildEventer\Code\BuildEventer1.0\BuildEventer\BuildEventer\obj\Debug\MainWindow.baml
 D:\Working\Task\BuildEventer\Code\BuildEventer1.0\BuildEventer\BuildEventer\obj\Debug\Views\ActionConfigurationView.baml
 D:\Working\Task\BuildEventer\Code\BuildEventer1.0\BuildEventer\BuildEventer\obj\Debug\Views\CopyActionView.baml

@@ -3,7 +3,8 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:vm="clr-namespace:BuildEventer.ViewModels"
         xmlns:view="clr-namespace:BuildEventer.Views"
-        Title="MainWindow" Height="350" Width="525">
+        xmlns:explorer="clr-namespace:BuildEventer.Explorer"
+        Title="MainWindow"  SizeToContent="WidthAndHeight">
     <!--<Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="Auto" />
@@ -26,6 +27,15 @@
         </Grid>
     </Grid>-->
     <Grid>
-        <view:ActionConfigurationView />
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="Auto"/>
+        </Grid.ColumnDefinitions>
+        <Grid Grid.Column="0" Height="600" Width="300" Margin="0">
+            <explorer:ExplorerView Margin="0,0,0,0" />
+        </Grid>
+        <Grid Grid.Column="1">
+            <view:ActionConfigurationView />
+        </Grid>
     </Grid>
 </Window>

@@ -56,10 +56,16 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Behavior\DropBehavior.cs" />
+    <Compile Include="Class\DragDropData.cs" />
+    <Compile Include="Command\DelegateCommand.cs" />
     <Compile Include="Command\RelayCommand.cs" />
     <Compile Include="Dialogue\StartUpDialogue.xaml.cs">
       <DependentUpon>StartUpDialogue.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Explorer\ExplorerView.xaml.cs">
+      <DependentUpon>ExplorerView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Explorer\HeaderToImageConverter.cs" />
     <Compile Include="Models\DeleteAction.cs" />
     <Compile Include="ViewModels\ConfigurationViewModel.cs" />
     <Compile Include="ViewModels\CopyActionViewModel.cs" />
@@ -76,6 +82,10 @@
       <DependentUpon>DeleteActionView.xaml</DependentUpon>
     </Compile>
     <Page Include="Dialogue\StartUpDialogue.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Explorer\ExplorerView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
