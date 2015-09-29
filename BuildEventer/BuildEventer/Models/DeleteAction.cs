@@ -57,7 +57,7 @@ namespace BuildEventer.Models
             }
         }
 
-        public BindingList<string> Sources
+        public override BindingList<string> Sources
         {
             get
             {
@@ -73,7 +73,7 @@ namespace BuildEventer.Models
             }
         }
 
-        public BindingList<string> Destinations
+        public override BindingList<string> Destinations
         {
             get
             {
@@ -87,6 +87,15 @@ namespace BuildEventer.Models
                     OnPropertyChanged("Destinations");
                 }
             }
+        }
+
+        #endregion
+
+        #region Public Methods
+
+        public override object Clone()
+        {
+            return (DeleteAction)this.MemberwiseClone();
         }
 
         #endregion

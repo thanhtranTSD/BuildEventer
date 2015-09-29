@@ -59,7 +59,10 @@
     <Compile Include="Class\DragDropData.cs" />
     <Compile Include="Command\DelegateCommand.cs" />
     <Compile Include="Command\RelayCommand.cs" />
-    <Compile Include="Dialogue\StartUpDialogue.xaml.cs">
+    <Compile Include="UI\ConfirmActionName\ConfirmActionName.xaml.cs">
+      <DependentUpon>ConfirmActionName.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UI\StartUpDialogue.xaml.cs">
       <DependentUpon>StartUpDialogue.xaml</DependentUpon>
     </Compile>
     <Compile Include="Explorer\ExplorerView.xaml.cs">
@@ -82,7 +85,11 @@
       <DependentUpon>DeleteActionView.xaml</DependentUpon>
     </Compile>
     <Compile Include="XMLManager\XMLManager.cs" />
-    <Page Include="Dialogue\StartUpDialogue.xaml">
+    <Page Include="UI\ConfirmActionName\ConfirmActionName.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UI\StartUpDialogue.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

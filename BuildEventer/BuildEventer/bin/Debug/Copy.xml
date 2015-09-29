@@ -1,2 +1,22 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<Objects>a</Objects>
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Actions>
+  <Action_1 type="Copy">
+    <Sources>
+      <Path>.\a1</Path>
+      <Path>.\a2</Path>
+    </Sources>
+    <Destinations>
+      <Path>.\b1</Path>
+      <Path>.\c1</Path>
+    </Destinations>
+  </Action_1>
+  <Action_2 type="Copy">
+    <Sources>
+      <Path>.\a2</Path>
+      <Path>.\a3</Path>
+    </Sources>
+    <Destinations>
+      <Path>.\b2</Path>
+    </Destinations>
+  </Action_2>
+</Actions>

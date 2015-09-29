@@ -11,9 +11,9 @@ namespace BuildEventer
         {
             InitializeComponent();
 
-            string xmlFile;//= XMLManager.XMLManager.GetFileDialog();
-            xmlFile = XMLManager.XMLManager.GetPathToSaveFile();
-            XMLManager.XMLManager.GenerateXml(xmlFile);
+            //string xmlFile;//= XMLManager.XMLManager.GetFileDialog();
+            //xmlFile = XMLManager.XMLManager.GetPathToSaveFile();
+            //XMLManager.XMLManager.GenerateXml(xmlFile);
         }
         #region Constructors
         #endregion

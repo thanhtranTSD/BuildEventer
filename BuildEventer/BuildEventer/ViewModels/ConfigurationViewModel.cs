@@ -1,9 +1,9 @@
 ﻿
 using BuildEventer.Command;
 using BuildEventer.Models;
+using BuildEventer.UI.ConfirmActionName;
 using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
 using System.Windows;
@@ -40,8 +40,16 @@ namespace BuildEventer.ViewModels
         private void CreateAction()
         {
             int orderAction = m_ViewModels.Count + 1;
+            string defaultActionName = "Action_" + orderAction.ToString();
+
+            ConfirmActionName confirmActionName = new ConfirmActionName(defaultActionName);
+            if (true == confirmActionName.ShowDialog())
+            {
+                defaultActionName = confirmActionName.NewName;
+            }
+
             CopyAction action = new CopyAction();
-            action.Name = "Action " + orderAction.ToString();
+            action.Name = defaultActionName;
             action.Sources = new BindingList<string>();
             action.Destinations = new BindingList<string>();
             CopyActionViewModel actionVM = new CopyActionViewModel(action);
