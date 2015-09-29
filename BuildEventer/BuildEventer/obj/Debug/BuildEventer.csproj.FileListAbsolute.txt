@@ -35,3 +35,4 @@ D:\Working\Task\BuildEventer\Code\BuildEventer1.0\BuildEventer\BuildEventer\obj\
 D:\Working\Task\BuildEventer\Code\BuildEventer1.0\BuildEventer\BuildEventer\obj\Debug\BuildEventer.csproj.GenerateResource.Cache
 D:\Working\Task\BuildEventer\Code\BuildEventer1.0\BuildEventer\BuildEventer\obj\Debug\BuildEventer.exe
 D:\Working\Task\BuildEventer\Code\BuildEventer1.0\BuildEventer\BuildEventer\obj\Debug\BuildEventer.pdb
+D:\Working\Task\BuildEventer\Code\BuildEventer1.0\BuildEventer\BuildEventer\obj\Debug\BuildEventer.csprojResolveAssemblyReference.cache

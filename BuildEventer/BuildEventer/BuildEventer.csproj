@@ -81,6 +81,7 @@
     <Compile Include="Views\DeleteActionView.xaml.cs">
       <DependentUpon>DeleteActionView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="XMLManager\XMLManager.cs" />
     <Page Include="Dialogue\StartUpDialogue.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

@@ -10,6 +10,10 @@ namespace BuildEventer
         public MainWindow()
         {
             InitializeComponent();
+
+            string xmlFile;//= XMLManager.XMLManager.GetFileDialog();
+            xmlFile = XMLManager.XMLManager.GetPathToSaveFile();
+            XMLManager.XMLManager.GenerateXml(xmlFile);
         }
         #region Constructors
         #endregion
@@ -20,7 +24,7 @@ namespace BuildEventer
         #region Public functions
         #endregion
 
-        
+
 
         #region Event handlers
         #endregion

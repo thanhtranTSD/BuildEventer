@@ -16,7 +16,7 @@
                 <ColumnDefinition Width="Auto" />
                 <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
-            <Label Grid.Column="0" Padding="1" Content="Current CopyAction:" />
+            <Label Grid.Column="0" Padding="1" Content="Current Action:" />
             <TextBlock Grid.Column="1" Padding="1" Text="{Binding Name}" />
         </Grid>       
         <StackPanel Grid.Row="1" Orientation="Horizontal">
